@@ -1,24 +1,35 @@
 import br.com.dio.desafio.dominio.*;
+import br.com.dio.desafio.util.Util;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
 
 public class Main {
 
     public static void main(String[] args) {
 
-        Curso curso1 = new Curso();
-        Curso curso2 = new Curso();
+        Dev dev;
+        Curso cursoJava = new Curso();
+        Curso cursoJavaScript = new Curso();
+        Util formatacao = new Util();
+        List<Curso> cursos = new ArrayList<>();
 
-        Conteudo cconteudoCurso = new Curso();
+        Conteudo conteudoCurso = new Curso();
         Conteudo conteudoMentoria = new Mentoria();
 
-        curso1.setTitulo("Curso de Java");
-        curso1.setDescricao("Descrição do curso de Java");
-        curso1.setCargaHoraria(8);curso1.setTitulo("Curso de Java");
+        cursoJava.setTitulo("Curso de Java");
+        cursoJava.setDescricao("Java e orientação a objetos");
+        cursoJava.setCargaHoraria(8);
+        cursoJava.setTitulo("Curso de Java");
 
-        curso2.setTitulo("Curso de Javascript");
-        curso2.setDescricao("Descrição do curso de Javascript");
-        curso2.setCargaHoraria(8);
+        cursoJavaScript.setTitulo("Curso de Javascript");
+        cursoJavaScript.setDescricao("Descrição do curso de Javascript");
+        cursoJavaScript.setCargaHoraria(8);
+
+        cursos.add(cursoJava);
+        cursos.add(cursoJavaScript);
 
         Mentoria mentoria = new Mentoria();
         mentoria.setTitulo("Mentoria de Java");
@@ -29,10 +40,33 @@ public class Main {
         Bootcamp bootcamp = new Bootcamp();
         bootcamp.setNome("Bootcamp Java Developer");
         bootcamp.setDescricao("Descrição Bootcamp Java Developer");
-        bootcamp.getConteudos().add(curso1);
-        bootcamp.getConteudos().add(curso2);
-        bootcamp.getConteudos().add(mentoria);
+        //bootcamp.getConteudos().add(curso1);
+        //bootcamp.getConteudos().add(curso2);
+        //bootcamp.getConteudos().add(mentoria);
 
+        formatacao.formatarTela();
+        formatacao.apresentarOpcoesBootcamp();
+        formatacao.listarCursos(cursos);
+
+        formatacao.selecionarOpcaoCurso();
+
+        Scanner entradaDoUsuario = new Scanner(System.in);
+        int opcao = entradaDoUsuario.nextInt();
+
+        if(opcao > 0) {
+            if(opcao == 1) {
+                System.out.println("Digite seu nome: ");
+                String nome = entradaDoUsuario.next();
+                dev = new Dev();
+                dev.setNome(nome);
+                dev.inscreverBootcamp(bootcamp);
+                formatacao.exibirMensagemSucesso();
+                System.out.println(cursoJava.getTitulo() + " - " + cursoJava.getDescricao());
+
+            }
+        }
+
+        /*
         Dev devLeandro = new Dev();
         devLeandro.setNome("Leandro Costa");
         devLeandro.inscreverBootcamp(bootcamp);
@@ -42,8 +76,6 @@ public class Main {
         System.out.println("Conteúdos Concluídos: " + devLeandro.getConteudosConcluidos());
         System.out.println("XP: " +devLeandro.calcularXp());
 
-        System.out.println("-------------");
-
         Dev outroDev = new Dev();
         outroDev.setNome("Outro Dev");
         outroDev.inscreverBootcamp(bootcamp);
@@ -51,6 +83,6 @@ public class Main {
         outroDev.progredir();
         System.out.println("-");
         System.out.println("Conteúdos Concluídos: " + outroDev.getConteudosConcluidos());
-        System.out.println("XP: " +outroDev.calcularXp());
+        System.out.println("XP: " +outroDev.calcularXp()); */
     }
 }
