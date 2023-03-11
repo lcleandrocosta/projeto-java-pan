@@ -6,14 +6,16 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import static br.com.dio.desafio.util.Util.COR;
+
 public class Main {
 
     public static void main(String[] args) {
 
-        Dev dev;
+        Dev dev = new Dev();
         Curso cursoJava = new Curso();
         Curso cursoJavaScript = new Curso();
-        Util formatacao = new Util();
+        Util util = new Util();
         List<Curso> cursos = new ArrayList<>();
 
         Conteudo conteudoCurso = new Curso();
@@ -25,7 +27,7 @@ public class Main {
         cursoJava.setTitulo("Curso de Java");
 
         cursoJavaScript.setTitulo("Curso de Javascript");
-        cursoJavaScript.setDescricao("Descrição do curso de Javascript");
+        cursoJavaScript.setDescricao("Javascript completo");
         cursoJavaScript.setCargaHoraria(8);
 
         cursos.add(cursoJava);
@@ -39,32 +41,38 @@ public class Main {
 
         Bootcamp bootcamp = new Bootcamp();
         bootcamp.setNome("Bootcamp Java Developer");
-        bootcamp.setDescricao("Descrição Bootcamp Java Developer");
-        //bootcamp.getConteudos().add(curso1);
-        //bootcamp.getConteudos().add(curso2);
-        //bootcamp.getConteudos().add(mentoria);
+        bootcamp.setDescricao("Descrição Bootcamp Java\n Developer");
+        bootcamp.getConteudos().add(cursoJava);
+        bootcamp.getConteudos().add(cursoJavaScript);
+        bootcamp.getConteudos().add(mentoria);
 
-        formatacao.formatarTela();
-        formatacao.apresentarOpcoesBootcamp();
-        formatacao.listarCursos(cursos);
+        util.formatarTela();
+        util.apresentarOpcoesBootcamp();
+        util.listarCursos(cursos);
 
-        formatacao.selecionarOpcaoCurso();
+        util.selecionarOpcaoCurso();
 
         Scanner entradaDoUsuario = new Scanner(System.in);
-        int opcao = entradaDoUsuario.nextInt();
-
-        if(opcao > 0) {
-            if(opcao == 1) {
-                System.out.println("Digite seu nome: ");
+        String opcao = entradaDoUsuario.next();
+        String converter = opcao.toUpperCase();
+        switch(converter) {
+            case ("S"):
+                System.out.print(COR + "32" + "m");
+                System.out.print("Digite seu nome: ");
+                System.out.print(COR + "m");
                 String nome = entradaDoUsuario.next();
-                dev = new Dev();
                 dev.setNome(nome);
                 dev.inscreverBootcamp(bootcamp);
-                formatacao.exibirMensagemSucesso();
-                System.out.println(cursoJava.getTitulo() + " - " + cursoJava.getDescricao());
-
-            }
+                util.limparTela();
+                util.exibirMensagemSucesso();
+                System.out.println(bootcamp.getNome() + " - " + dev.getConteudosInscrito());
+                break;
+            default:
+                util.limparTela();
         }
+    }
+
+    //formatacao.limparTela();
 
         /*
         Dev devLeandro = new Dev();
@@ -84,5 +92,5 @@ public class Main {
         System.out.println("-");
         System.out.println("Conteúdos Concluídos: " + outroDev.getConteudosConcluidos());
         System.out.println("XP: " +outroDev.calcularXp()); */
-    }
 }
+
