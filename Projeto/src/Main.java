@@ -41,7 +41,7 @@ public class Main {
 
         Bootcamp bootcamp = new Bootcamp();
         bootcamp.setNome("Bootcamp Java Developer");
-        bootcamp.setDescricao("Descrição Bootcamp Java\n Developer");
+        bootcamp.setDescricao("Descrição Bootcamp Java Deve-\nloper");
         bootcamp.getConteudos().add(cursoJava);
         bootcamp.getConteudos().add(cursoJavaScript);
         bootcamp.getConteudos().add(mentoria);
@@ -65,7 +65,7 @@ public class Main {
                 dev.inscreverBootcamp(bootcamp);
                 util.limparTela();
                 util.exibirMensagemSucesso();
-                System.out.println(bootcamp.getNome() + " - " + dev.getConteudosInscrito());
+                conteudoCurso.apresentarRelatorio(bootcamp);
                 break;
             default:
                 util.limparTela();

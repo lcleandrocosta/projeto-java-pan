@@ -32,15 +32,13 @@ public class Util {
     public void apresentarOpcoesBootcamp() {
         System.out.print(COR + "33" + "m"); //Amarelo
         System.out.println("############ Opções de cursos no Bootcamp #############");
-        System.out.print(COR + "33" + "m");
-        System.out.println("|                                                     |");
         System.out.print (COR + "m");
         System.out.println();
     }
 
     public void selecionarOpcaoCurso() {
         System.out.print(COR + "32" + "m"); // Verde
-        System.out.print("Deseja inscrever-se no Bootcamp? ");
+        System.out.print("Deseja inscrever-se no Bootcamp? [S] ou [N]: ");
         System.out.print(COR + "m");
     }
 
@@ -62,7 +60,7 @@ public class Util {
     }
 
     public void limparTela() {
-        for(int i = 0; i < 2; i++) {
+        for(int i = 0; i < 4; i++) {
             System.out.println("\n");
         }
         this.formatarTela();
