@@ -60,7 +60,7 @@ public class Util {
     }
 
     public void limparTela() {
-        for(int i = 0; i < 4; i++) {
+        for(int i = 0; i < 1; i++) {
             System.out.println("\n");
         }
         this.formatarTela();
